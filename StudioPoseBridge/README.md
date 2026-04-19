@@ -6,16 +6,40 @@ Loopback HTTP server for **StudioNeoV2** (`StudioNEOV2.exe`) using the game’s 
 
 Prerequisites: .NET SDK, game install with managed assemblies.
 
+### Quick build (script)
+
+From this folder:
+
+```powershell
+.\build.ps1
+```
+
+Or double-click / run `build.bat` (same script).
+
+Optional:
+
+- **`-Hs2StudioRoot`** — game root (defaults to `D:\Honey Select` or env `HS2_STUDIO_ROOT`).
+- **`-GameDir`** — if set, copies the DLL to `%GameDir%\BepInEx\plugins\StudioPoseBridge\` (or set env `HS2_GAME_DIR`).
+
+Examples:
+
+```powershell
+.\build.ps1 -Configuration Release
+.\build.ps1 -Hs2StudioRoot "E:\Games\Honey Select" -GameDir "E:\Games\Honey Select"
+```
+
+### Manual `dotnet`
+
 Default paths are set for `D:\Honey Select` in the `.csproj`. Override with:
 
-- `HS2StudioRoot` — game root (contains `StudioNEOV2_Data`, `BepInEx`)
-- `HS2_GAME_DIR` — optional; if set, copies the built DLL to `%HS2_GAME_DIR%\BepInEx\plugins\StudioPoseBridge\` after build
+- MSBuild property **`HS2StudioRoot`** — game root (contains `StudioNEOV2_Data`, `BepInEx`)
+- **`HS2_GAME_DIR`** — optional; if set, copies the built DLL to `%HS2_GAME_DIR%\BepInEx\plugins\StudioPoseBridge\` after build
 
 ```powershell
 dotnet build .\src\StudioPoseBridge\StudioPoseBridge.csproj -c Release
 ```
 
-Output: `..\build\StudioPoseBridge.dll` (relative to the project file).
+Output (repo root): **`build\StudioPoseBridge.dll`**.
 
 ## Install
 

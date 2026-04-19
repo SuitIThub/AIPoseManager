@@ -6,6 +6,9 @@ build/
 # Local game / BepInEx references (copy DLLs here if you use a non-default layout)
 Refs/
 
+# MCP bundle output
+studio-pose-mcp/dist/
+
 # Python
 __pycache__/
 *.py[cod]

@@ -1,0 +1,54 @@
+{
+  "manifest_version": "0.4",
+  "name": "studio-pose-bridge",
+  "display_name": "Studio Pose Bridge",
+  "version": "0.1.0",
+  "description": "Control StudioNeoV2 character poses via the Studio Pose Bridge BepInEx plugin (loopback HTTP). Requires Studio running with the plugin loaded.",
+  "long_description": "Provides MCP tools: list/select characters, pose summary, set bones, screenshots, checkpoints. Set **Pose Bridge token** to the value printed in the BepInEx log when the plugin starts.",
+  "author": {
+    "name": "Suit-Ji",
+    "url": "https://github.com/SuitIThub"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SuitIThub/AIPoseManager"
+  },
+  "homepage": "https://github.com/SuitIThub/AIPoseManager",
+  "server": {
+    "type": "uv",
+    "entry_point": "src/studio_pose_mcp/__main__.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": ["run", "--directory", "${__dirname}", "studio-pose-mcp"],
+      "env": {
+        "POSE_PLUGIN_TOKEN": "${user_config.plugin_token}",
+        "POSE_PLUGIN_URL": "${user_config.plugin_url}"
+      }
+    }
+  },
+  "tools_generated": true,
+  "user_config": {
+    "plugin_token": {
+      "type": "string",
+      "title": "Pose Bridge token",
+      "description": "Paste the token from the BepInEx console when Studio Pose Bridge starts (also in BepInEx/config/com.suitji.studio_pose_bridge.cfg).",
+      "sensitive": true,
+      "required": true
+    },
+    "plugin_url": {
+      "type": "string",
+      "title": "Plugin base URL",
+      "description": "HTTP URL of the plugin (loopback).",
+      "required": false,
+      "default": "http://127.0.0.1:7842"
+    }
+  },
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "python": ">=3.11"
+    }
+  },
+  "keywords": ["studio", "pose", "bepinex", "mcp", "studio-neov2"],
+  "license": "MIT"
+}

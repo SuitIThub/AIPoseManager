@@ -36,6 +36,36 @@ studio-pose-mcp
 python -m studio_pose_mcp
 ```
 
+## Claude Desktop (`.mcpb` bundle)
+
+Anthropic’s **MCP Bundle** format is a zip archive with a `manifest.json` (see the [MCP Bundles spec](https://github.com/modelcontextprotocol/mcpb/blob/main/MANIFEST.md)). Older docs referred to the same idea as **`.dxt`**; **`.mcpb`** is the current extension—functionally the same kind of installer.
+
+### Build the `.mcpb` file
+
+From `studio-pose-mcp/`:
+
+```powershell
+.\pack-mcpb.ps1
+# or
+.\pack-mcpb.bat
+```
+
+This writes **`dist/studio-pose-bridge.mcpb`**. Double-click it (or use Claude Desktop’s install-from-file flow). When prompted, paste your **Pose Bridge token** from the BepInEx log.
+
+The bundle uses **`server.type: uv`**: Claude Desktop’s runtime installs dependencies from `pyproject.toml` via `uv` (no manual `pip install` inside the bundle).
+
+### Official CLI (optional)
+
+If you have Node/npm:
+
+```bash
+npm install -g @anthropic-ai/mcpb
+cd studio-pose-mcp
+mcpb pack   # after mcpb init / manifest layout per upstream docs
+```
+
+For this repo, the maintained manifest lives in **`claude-desktop/manifest.json`**; **`pack-mcpb.ps1`** mirrors what `mcpb pack` would assemble for our layout.
+
 ## Tools
 
 Eight tools: `list_characters`, `select_character`, `get_pose_summary`, `set_bones`, `get_screenshot`, `save_checkpoint`, `restore_checkpoint`, `get_diff_since_checkpoint`.

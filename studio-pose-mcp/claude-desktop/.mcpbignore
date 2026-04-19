@@ -1,0 +1,7 @@
+# Used if you pack with the official `mcpb` CLI from the repo root.
+dist/
+.git/
+tests/
+**/__pycache__/
+*.pyc
+.env

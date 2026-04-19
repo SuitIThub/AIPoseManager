@@ -11,7 +11,9 @@ Monorepo for **Studio Pose Bridge**: a BepInEx plugin for **StudioNeoV2** (Honey
 
 ## Quick start
 
-1. Build the plugin (see [StudioPoseBridge/README.md](StudioPoseBridge/README.md)), deploy the DLL under `BepInEx/plugins/StudioPoseBridge/`, start Studio, copy the token from the BepInEx log.
-2. Install the MCP server: `pip install -e ./studio-pose-mcp` and set `POSE_PLUGIN_TOKEN` (see [studio-pose-mcp/README.md](studio-pose-mcp/README.md)).
+1. **Plugin (C#):** run [`StudioPoseBridge/build.ps1`](StudioPoseBridge/build.ps1) or `build.bat` — see [StudioPoseBridge/README.md](StudioPoseBridge/README.md). Deploy the DLL under `BepInEx/plugins/StudioPoseBridge/`, start Studio, copy the token from the BepInEx log.
+2. **MCP (Python):** there is **no compile step**. Install once with `pip install -e ./studio-pose-mcp` (editable install is the usual “build”), set `POSE_PLUGIN_TOKEN`, and run `studio-pose-mcp`. See [studio-pose-mcp/README.md](studio-pose-mcp/README.md).
 
 Spec sources: `PLAN_plugin.md`, `PLAN_mcp_server.md`.
+
+**QA:** See [TESTING.md](TESTING.md) for a checkbox test plan (plugin HTTP + MCP tools).
